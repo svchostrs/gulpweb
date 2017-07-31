@@ -78,7 +78,7 @@ gulp.task('init', function(){
 // Run git add 
 // src is the file(s) to add (or ./*) 
 gulp.task('add', function(){
-  return gulp.src('./gulptask/**')
+  return gulp.src(['app/','dist/','gulpfile.js'])
     .pipe(git.add());
 });
  
@@ -87,10 +87,12 @@ gulp.task('add', function(){
 // Run git commit, passing multiple messages as if calling 
 // git commit -m "initial commit" -m "additional message" 
 gulp.task('commit', function(){
-  return gulp.src('./git-test/*')
-    .pipe(git.commit('initial commit'));
+  return gulp.src(['app/','dist/','gulpfile.js'])
+    .pipe(git.commit(undefined, {
+      args: '-m "initial commit"',
+      disableMessageRequirement: true
+    }));
 });
- 
  
 // Run git remote add 
 // remote is the remote repo 
