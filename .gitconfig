@@ -1,0 +1,6 @@
+$ git config --list
+
+$ git config -e [--global]
+
+ 
+$ git config [--global] user.email "[svchostrs@163.com]"
