@@ -51,7 +51,7 @@ gulp.task('removeremote', function(){
 // Run git push 
 // branch is the current branch & remote branch to push to 
 gulp.task('push', function(){
-  git.push('origin','master',function (err) {
+  git.push('origin',function (err) {
     if (err) throw err;
   });
 });
