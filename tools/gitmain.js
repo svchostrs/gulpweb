@@ -1,6 +1,7 @@
  var gulp = require('gulp'),
      browserSync = require('browser-Sync'),
-     git = require('gulp-git');
+     git = require('gulp-git'),
+     gulpclean = require('gulp-clean');
  
 
 gulp.task('init', function(){
@@ -13,7 +14,7 @@ gulp.task('init', function(){
 gulp.task('add', function(){
   return gulp.src('./*')
     .pipe(git.add({args: '-A -f'}));
-    console.log('dsd')
+ 
 });
  
 
@@ -27,10 +28,7 @@ gulp.task('add', function(){
 //  提交文件至暂存区 
 gulp.task('commit', function(){
   return gulp.src('./*')
-    .pipe(git.commit(undefined, {
-      args: '-m "initial commit"',
-      disableMessageRequirement: true
-    }));
+      .pipe(git.commit('initial commit', {args: '-m'}));
 });
  
 // Run git remote add 
@@ -190,9 +188,14 @@ gulp.task('log', function(){
     if (err) throw err;
   });
 });
- 
 
 //  上传文件
 gulp.task('forgit',['add','commit','push'],()=>{
 
-});
+}); 
+
+ gulp.task('cleangit', function() {
+   return gulp.src(['hooks/','info/','objects/','options/','refs/','sub/'])
+    .pipe(gulpclean());
+ });
+
