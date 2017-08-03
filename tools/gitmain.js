@@ -16,11 +16,10 @@ gulp.task('add', function(){
     .pipe(git.add({args: '-A -f'}));
  
 });
- 
 
  //  删除 
  gulp.task('rm', function(){
-   return gulp.src('./*')
+   return gulp.src('dist/index.html')
      .pipe(git.rm({args:'-r --cached'}));
  });
   
@@ -31,25 +30,21 @@ gulp.task('commit', function(){
       .pipe(git.commit('initial commit', {args: '-m'}));
 });
  
-// Run git remote add 
-// remote is the remote repo 
-// repo is the https url of the repo 
+//  关联远程仓库地址
 gulp.task('addremote', function(){
   git.addRemote('origin', 'https://github.com/svchostrs/gulpweb.git', function (err) {
     if (err) throw err;
   });
 });
  
-// Run git remote remove 
-// remote is the remote repo 
+// 移除关联仓库地址
 gulp.task('removeremote', function(){
   git.removeRemote('origin', function (err) {
     if (err) throw err;
   });
 });
  
-// Run git push 
-// branch is the current branch & remote branch to push to 
+// 上传至远程仓库 
 gulp.task('push',['add','commit'], function(){
   git.push('origin',function (err) {
     if (err) throw err;
@@ -190,9 +185,10 @@ gulp.task('log', function(){
 });
 
 //  上传文件
-gulp.task('forgit',['add','commit','push'],()=>{
+gulp.task('forgit',['push'],()=>{
 
 }); 
+
 
  gulp.task('cleangit', function() {
    return gulp.src(['hooks/','info/','objects/','options/','refs/','sub/'])
