@@ -20,7 +20,7 @@ gulp.task('add', function(){
  //  删除 
  gulp.task('rm', function(){
    return gulp.src('dist/*')
-     .pipe(git.rm());
+     .pipe(git.rm({args:'-r  '}));
  });
   
 
