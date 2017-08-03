@@ -36,7 +36,7 @@ gulp.task('commit', function(){
 // remote is the remote repo 
 // repo is the https url of the repo 
 gulp.task('addremote', function(){
-  git.addRemote('origin', 'https://github.com/svchostrs/gulptask', function (err) {
+  git.addRemote('origin', 'https://github.com/svchostrs/gulpwap.git', function (err) {
     if (err) throw err;
   });
 });
