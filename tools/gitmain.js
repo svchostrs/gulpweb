@@ -19,8 +19,8 @@ gulp.task('add', function(){
 
  //  删除 
  gulp.task('rm', function(){
-   return gulp.src('dist/index.html')
-     .pipe(git.rm());
+   return gulp.src('dist/*.html')
+     .pipe(git.rm({args:'-r --cached'}));
  });
   
 
