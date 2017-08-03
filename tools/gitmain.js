@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+ var gulp = require('gulp'),
      browserSync = require('browser-Sync'),
      git = require('gulp-git');
  
@@ -191,4 +191,7 @@ gulp.task('log', function(){
 });
  
 
- 
+//  上传文件
+gulp.task('forgit',['add','commit','push'],()=>{
+
+});
