@@ -50,7 +50,20 @@ gulp.task('push',['add','commit'], function(){
     if (err) throw err;
   });
 });
- 
+
+// gitadd 
+gulp.task('gitadd',['add','commit'], function(){
+  git.push('origin',function (err) {
+    if (err) throw err;
+  });
+}); 
+
+// gitdel 
+gulp.task('gitdel',['rm','commit'], function(){
+  git.push('origin',function (err) {
+    if (err) throw err;
+  });
+}); 
  
 // Run git pull 
 // remote is the remote repo 
