@@ -1,4 +1,4 @@
- var gulp = require('gulp'),
+var gulp = require('gulp'),
      browserSync = require('browser-Sync'),
      git = require('gulp-git');
  
@@ -11,21 +11,21 @@ gulp.task('init', function(){
  
 //  git add 
 gulp.task('add', function(){
-  return gulp.src('./dist/*')
-    .pipe(git.add({args: '-A'}));
+  return gulp.src('./*')
+    .pipe(git.add({args: '-A -f'}));
 });
  
 
  //  删除 
  gulp.task('rm', function(){
-   return gulp.src('./dist/*')
+   return gulp.src('./*')
      .pipe(git.rm({args:'-r --cached'}));
  });
   
 
 //  提交文件至暂存区 
 gulp.task('commit', function(){
-  return gulp.src('./dist/*')
+  return gulp.src('./*')
     .pipe(git.commit(undefined, {
       args: '-m "initial commit"',
       disableMessageRequirement: true
@@ -52,7 +52,7 @@ gulp.task('removeremote', function(){
 // Run git push 
 // branch is the current branch & remote branch to push to 
 gulp.task('push', function(){
-  git.push('origin',{args: " -f"},function (err) {
+  git.push('origin',{args: " -u"},function (err) {
     if (err) throw err;
   });
 });
@@ -191,7 +191,4 @@ gulp.task('log', function(){
 });
  
 
-//  上传文件
-gulp.task('forgit',['add','commit'],()=>{
-
-});
+ 

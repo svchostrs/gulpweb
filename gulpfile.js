@@ -65,6 +65,6 @@ gulp.task('default',['clean'],()=>{
 
 
 //  上传文件
-gulp.task('forgit',['add','commit'],()=>{
+gulp.task('forgit',['add','commit','push'],()=>{
 
 });
